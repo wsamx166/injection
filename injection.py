@@ -5,7 +5,7 @@ import webbrowser
 ope_n = input("Do you want to watch an explanatory video? [n/y] => ")
 if ope_n == 'y' :
     print()
-    webbrowser.open("https://www.google.co.uk/search?q=")
+    webbrowser.open("")
 else:
     pass
 naem = input('Do you want to create payload? [y/n]=> ')

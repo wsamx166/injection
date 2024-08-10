@@ -5,3 +5,4 @@
 # Run
 	python3 install.py
 	python3 injection.py
+ telegram: => @wsam1064

